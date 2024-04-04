@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres
+    container_name: ohgetsu-nest-db
+    environment:
+      POSTGRES_DB: ohgetsu-nest
+      POSTGRES_PASSWORD: postgres
+      TZ: 'Asia/Tokyo'
+    ports:
+      - 5432:5432
+    volumes:
+      - db-store:/var/lib/postgresql/data
+volumes:
+  db-store:
