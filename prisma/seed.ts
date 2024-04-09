@@ -344,6 +344,120 @@ async function main() {
       },
     ],
   });
+
+  // ingredientsの初期データを登録
+  await prisma.ingredients.createMany({
+    data: [
+      {
+        name: '卵',
+        pic: '/image/ingredients/egg.png',
+      },
+      {
+        name: '乳',
+        pic: '/image/ingredients/milk.png',
+      },
+      {
+        name: '小麦',
+        pic: '/image/ingredients/wheat.png',
+      },
+      {
+        name: 'そば',
+        pic: '/image/ingredients/soba.png',
+      },
+      {
+        name: 'えび',
+        pic: '/image/ingredients/shrimp.png',
+      },
+      {
+        name: 'かに',
+        pic: '/image/ingredients/crab.png',
+      },
+      {
+        name: 'アーモンド',
+        pic: '/image/ingredients/almond.png',
+      },
+      {
+        name: 'あわび',
+        pic: '/image/ingredients/shell.png',
+      },
+      {
+        name: 'いか',
+        pic: '/image/ingredients/squid.png',
+      },
+      {
+        name: 'いくら',
+        pic: '/image/ingredients/salmon_roe.png',
+      },
+      {
+        name: 'オレンジ',
+        pic: '/image/ingredients/orange.png',
+      },
+      {
+        name: 'カシューナッツ',
+        pic: '/image/ingredients/cashew.png',
+      },
+      {
+        name: 'キウイフルーツ',
+        pic: '/image/ingredients/kiwi.png',
+      },
+      {
+        name: '牛肉',
+        pic: '/image/ingredients/cow.png',
+      },
+      {
+        name: 'くるみ',
+        pic: '/image/ingredients/walnut.png',
+      },
+      {
+        name: 'ごま',
+        pic: '/image/ingredients/sesame.png',
+      },
+      {
+        name: 'さけ',
+        pic: '/image/ingredients/salmon.png',
+      },
+      {
+        name: 'さば',
+        pic: '/image/ingredients/mackerel.png',
+      },
+      {
+        name: '大豆',
+        pic: '/image/ingredients/soy.png',
+      },
+      {
+        name: '鶏肉',
+        pic: '/image/ingredients/chicken.png',
+      },
+      {
+        name: 'バナナ',
+        pic: '/image/ingredients/banana.png',
+      },
+      {
+        name: '豚肉',
+        pic: '/image/ingredients/pig.png',
+      },
+      {
+        name: 'まつたけ',
+        pic: '/image/ingredients/mushroom.png',
+      },
+      {
+        name: 'もも',
+        pic: '/image/ingredients/peach.png',
+      },
+      {
+        name: 'やまいも',
+        pic: '/image/ingredients/potato.png',
+      },
+      {
+        name: 'りんご',
+        pic: '/image/ingredients/apple.png',
+      },
+      {
+        name: 'ゼラチン',
+        pic: '/image/ingredients/jelly.png',
+      },
+    ],
+  });
 }
 
 main()
