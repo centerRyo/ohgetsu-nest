@@ -9,6 +9,5 @@ export class IngredientsService {
     const ingredients = await this.prisma.ingredients.findMany();
 
     return ingredients;
-    return 'Hello World!!!!!!!!!!!!!!!!!';
   }
 }
