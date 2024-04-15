@@ -5,6 +5,7 @@ import { ConfigModule } from '@nestjs/config';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { IngredientsModule } from './ingredients/ingredients.module';
+import { GenresModule } from './genres/genres.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { IngredientsModule } from './ingredients/ingredients.module';
       rootPath: join(__dirname, '..', 'public'),
     }),
     IngredientsModule,
+    GenresModule,
   ],
   controllers: [AppController],
   providers: [AppService],
