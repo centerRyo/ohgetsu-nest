@@ -6,6 +6,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { IngredientsModule } from './ingredients/ingredients.module';
 import { GenresModule } from './genres/genres.module';
+import { GlobalModule } from './global.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { GenresModule } from './genres/genres.module';
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'public'),
     }),
+    GlobalModule,
     IngredientsModule,
     GenresModule,
   ],
