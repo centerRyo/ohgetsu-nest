@@ -7,6 +7,7 @@ import { join } from 'path';
 import { IngredientsModule } from './ingredients/ingredients.module';
 import { GenresModule } from './genres/genres.module';
 import { GlobalModule } from './global.module';
+import { RestaurantsModule } from './restaurants/restaurants.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { GlobalModule } from './global.module';
     GlobalModule,
     IngredientsModule,
     GenresModule,
+    RestaurantsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
