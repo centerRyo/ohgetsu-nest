@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma.service';
 import { CreateRestaurantDto } from './create-restaurant.dto';
+import { UpdateRestaurantDto } from './update-restaurant.dto';
 
 @Injectable()
 export class RestaurantsService {
@@ -18,6 +19,15 @@ export class RestaurantsService {
 
   async create(data: CreateRestaurantDto) {
     const restaurant = await this.prisma.restaurants.create({
+      data,
+    });
+
+    return restaurant;
+  }
+
+  async update(id: string, data: UpdateRestaurantDto) {
+    const restaurant = await this.prisma.restaurants.update({
+      where: { id },
       data,
     });
 

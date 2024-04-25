@@ -1,8 +1,18 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Injectable,
+  Param,
+  Patch,
+  Post,
+} from '@nestjs/common';
 import { RestaurantsService } from './restaurants.service';
 import { RestaurantDto } from './restaurants.dto';
 import { CreateRestaurantDto } from './create-restaurant.dto';
+import { UpdateRestaurantDto } from './update-restaurant.dto';
 
+@Injectable()
 @Controller('restaurants')
 export class RestaurantsController {
   constructor(private readonly restaurantsService: RestaurantsService) {}
@@ -16,6 +26,16 @@ export class RestaurantsController {
   @Post()
   async create(@Body() data: CreateRestaurantDto): Promise<RestaurantDto> {
     const restaurant = await this.restaurantsService.create(data);
+
+    return new RestaurantDto(restaurant);
+  }
+
+  @Patch(':id')
+  async update(
+    @Param('id') id: string,
+    @Body() data: UpdateRestaurantDto,
+  ): Promise<RestaurantDto> {
+    const restaurant = await this.restaurantsService.update(id, data);
 
     return new RestaurantDto(restaurant);
   }
