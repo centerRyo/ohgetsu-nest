@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Injectable,
   Param,
@@ -38,5 +39,12 @@ export class RestaurantsController {
     const restaurant = await this.restaurantsService.update(id, data);
 
     return new RestaurantDto(restaurant);
+  }
+
+  @Delete(':id')
+  async delete(@Param('id') id: string) {
+    await this.restaurantsService.delete(id);
+
+    return { result: true };
   }
 }

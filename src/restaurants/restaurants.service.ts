@@ -33,4 +33,13 @@ export class RestaurantsService {
 
     return restaurant;
   }
+
+  async delete(id: string) {
+    return await this.prisma.restaurants.update({
+      where: { id },
+      data: {
+        deletedAt: new Date(),
+      },
+    });
+  }
 }
