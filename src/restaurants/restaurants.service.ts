@@ -29,9 +29,15 @@ export class RestaurantsService {
   }
 
   async update(id: string, data: UpdateRestaurantDto) {
+    const { isReopen, ...rest } = data;
+    const deletedAt = isReopen ? null : undefined;
+
     const restaurant = await this.prisma.restaurants.update({
       where: { id },
-      data,
+      data: {
+        ...rest,
+        deletedAt,
+      },
     });
 
     return restaurant;
