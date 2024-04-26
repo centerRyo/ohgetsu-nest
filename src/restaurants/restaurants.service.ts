@@ -9,6 +9,9 @@ export class RestaurantsService {
 
   async findAll() {
     const restaurants = await this.prisma.restaurants.findMany({
+      where: {
+        deletedAt: null,
+      },
       include: {
         genre: true,
       },
