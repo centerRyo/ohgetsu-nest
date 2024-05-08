@@ -8,6 +8,7 @@ import { IngredientsModule } from './ingredients/ingredients.module';
 import { GenresModule } from './genres/genres.module';
 import { GlobalModule } from './global.module';
 import { RestaurantsModule } from './restaurants/restaurants.module';
+import { MenusModule } from './menus/menus.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { RestaurantsModule } from './restaurants/restaurants.module';
     IngredientsModule,
     GenresModule,
     RestaurantsModule,
+    MenusModule,
   ],
   controllers: [AppController],
   providers: [AppService],
