@@ -2,5 +2,11 @@
   "editor.formatOnSave": true,
   "[prisma]": {
     "editor.defaultFormatter": "Prisma.prisma"
+  },
+  "jestrunner.runOptions": ["--watch"],
+  "jestrunner.debugOptions": {
+    "STAGE": "test",
+    "DB_NAME": "ohgetsu-nest-test",
+    "DB_URL": "postgresql://postgres:postgres@127.0.0.1:5433/ohgetsu-nest-test"
   }
 }

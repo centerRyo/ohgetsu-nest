@@ -1,4 +1,4 @@
-version: "3.8"
+version: '3.8'
 
 services:
   db:
@@ -12,5 +12,15 @@ services:
       - 5432:5432
     volumes:
       - db-store:/var/lib/postgresql/data
+
+  test-db:
+    image: postgres
+    container_name: ohgetsu-nest-test-db
+    environment:
+      POSTGRES_DB: ohgetsu-nest-test
+      POSTGRES_PASSWORD: postgres
+      TZ: 'Asia/Tokyo'
+    ports:
+      - 5433:5432
 volumes:
   db-store:
