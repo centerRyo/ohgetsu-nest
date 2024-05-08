@@ -1,5 +1,5 @@
 import { Expose } from 'class-transformer';
-import { IsString, IsUUID } from 'class-validator';
+import { IsOptional, IsString, IsUUID } from 'class-validator';
 import { IngredientDto } from 'src/ingredients/ingredients.dto';
 
 export class MenuDto {
@@ -22,6 +22,7 @@ export class MenuDto {
    */
   @Expose()
   @IsString()
+  @IsOptional()
   pic: string | null;
 
   /**
