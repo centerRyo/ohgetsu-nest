@@ -1,10 +1,31 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma.service';
 import { CreateMenuDto } from './create-menu.dto';
+import { findMenusQuery } from './menus.dto';
 
 @Injectable()
 export class MenusService {
   constructor(private readonly prisma: PrismaService) {}
+
+  async findAll(query: findMenusQuery, restaurantId: string) {
+    const menus = await this.prisma.menus.findMany({
+      where: {
+        restaurantId: restaurantId,
+        ingredients: {
+          none: {
+            id: {
+              in: query.ingredientIds,
+            },
+          },
+        },
+      },
+      include: {
+        ingredients: true,
+      },
+    });
+
+    return menus;
+  }
 
   async create(data: CreateMenuDto) {
     const restaurant = await this.prisma.restaurants.findUnique({
