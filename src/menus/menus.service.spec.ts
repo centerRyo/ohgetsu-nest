@@ -18,6 +18,49 @@ describe('MenusService', () => {
     prisma = module.get<PrismaService>(PrismaService);
   });
 
+  it('アレルギー情報が入力されるとそのアレルギー情報を含まないメニューを取得する', async () => {
+    const restaurant = await prisma.restaurants.findFirst();
+    const eggIndredient = await prisma.ingredients.findFirst({
+      where: {
+        name: '卵',
+      },
+    });
+    const milkIngredient = await prisma.ingredients.findFirst({
+      where: {
+        name: '乳',
+      },
+    });
+
+    // メニューを作成
+    await service.create({
+      restaurantId: restaurant.id,
+      menus: [
+        {
+          name: '卵を含む',
+          pic: null,
+          ingredients: [eggIndredient],
+        },
+        {
+          name: '卵、乳を含む',
+          pic: null,
+          ingredients: [eggIndredient, milkIngredient],
+        },
+        {
+          name: '卵、乳を含まない',
+          pic: null,
+          ingredients: [],
+        },
+      ],
+    });
+
+    const data = await service.findAll(
+      { ingredientIds: [eggIndredient.id] },
+      restaurant.id,
+    );
+
+    expect(data.length).toBe(1);
+  });
+
   it('メニューが作成できる', async () => {
     const restaurant = await prisma.restaurants.findFirst();
     const ingredient = await prisma.ingredients.findFirst();

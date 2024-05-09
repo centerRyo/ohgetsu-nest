@@ -1,5 +1,5 @@
 import { Expose } from 'class-transformer';
-import { IsOptional, IsString, IsUUID } from 'class-validator';
+import { IsArray, IsOptional, IsString, IsUUID } from 'class-validator';
 import { IngredientDto } from 'src/ingredients/ingredients.dto';
 
 export class MenuDto {
@@ -26,8 +26,17 @@ export class MenuDto {
   pic: string | null;
 
   /**
-   * アレルゲン情報
+   * アレルギー情報
    */
   @Expose()
   ingredients: IngredientDto[];
+}
+
+export class findMenusQuery {
+  /**
+   * アレルギー情報のID
+   */
+  @Expose()
+  @IsArray()
+  ingredientIds: string[];
 }
